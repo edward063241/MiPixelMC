@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>MiPixelMC | Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00d4ff; --secondary: #0055ff; --dark-bg: #050a15; --card-bg: #0d1626; }
+        body { font-family: 'Poppins', sans-serif; background: var(--dark-bg); color: white; margin: 0; text-align: center; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #050a12; border-bottom: 2px solid var(--primary); }
+        .logo { font-size: 1.6rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 600; }
+
+        .container { padding: 50px 8%; }
+        .grid-shop { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .shop-card { 
+            background: var(--card-bg); padding: 30px; border-radius: 15px; 
+            border: 1px solid rgba(0, 212, 255, 0.1); transition: 0.3s;
+        }
+        .shop-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        
+        .price-btn { 
+            display: inline-block; background: var(--primary); color: #050a15; 
+            padding: 12px 25px; border-radius: 8px; font-weight: 800; 
+            cursor: pointer; margin-top: 15px; text-decoration: none;
+        }
+
+        /* MODALE PAGAMENTO */
+        .modal { 
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8); 
+            align-items: center; justify-content: center;
+        }
+        .modal-content { 
+            background: #0d1626; padding: 40px; border-radius: 20px; 
+            max-width: 400px; width: 90%; border: 2px solid var(--primary);
+        }
+        .pay-option { 
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255,255,255,0.05); padding: 15px; margin: 10px 0;
+            border-radius: 10px; cursor: pointer; transition: 0.2s;
+        }
+        .pay-option:hover { background: rgba(0, 212, 255, 0.2); }
+        .pay-option img { height: 25px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">MiPixel<span>MC</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="staff.html">Staff</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Scegli il tuo <span>Grado</span></h2>
+        <div class="grid-shop">
+            <div class="shop-card">
+                <h3>VIP</h3>
+                <p>Base rank per supportare il server.</p>
+                <div class="price-btn" onclick="openPay('VIP', '4.99')">€4.99</div>
+            </div>
+            <div class="shop-card">
+                <h3>MVP</h3>
+                <p>Il grado più amato dai player.</p>
+                <div class="price-btn" onclick="openPay('MVP', '14.99')">€14.99</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="payModal" class="modal">
+        <div class="modal-content">
+            <h3 id="productName">Prodotto</h3>
+            <p>Totale: <span id="productPrice" style="color: var(--primary); font-weight: bold;"></span></p>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+            <p>Seleziona Metodo di Pagamento:</p>
+            
+            <div class="pay-option" onclick="processPay('PayPal')">
+                <span>PayPal</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+            </div>
+            <div class="pay-option" onclick="processPay('Carta di Credito')">
+                <span>Carta / Stripe</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+            </div>
+            
+            <button onclick="closePay()" style="background: none; border: none; color: #888; cursor: pointer; margin-top: 15px;">Annulla</button>
+        </div>
+    </div>
+
+    <script>
+        function openPay(name, price) {
+            document.getElementById('productName').innerText = name;
+            document.getElementById('productPrice').innerText = "€" + price;
+            document.getElementById('payModal').style.display = 'flex';
+        }
+        function closePay() {
+            document.getElementById('payModal').style.display = 'none';
+        }
+        function processPay(method) {
+            alert("Ti stiamo reindirizzando al gateway sicuro di " + method);
+            // Qui andrebbe il link reale al tuo store (es. Tebex)
+        }
+    </script>
+</body>
+</html>
