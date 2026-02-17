@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiPixelMC | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00d4ff; --secondary: #0055ff; --dark-bg: #050a15; --card-bg: #0d1626; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--dark-bg); color: white; }
+        
+        /* Navbar Comune */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(5, 10, 21, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); }
+        .logo { font-size: 1.6rem; font-weight: 800; } .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero */
+        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%); }
+        .hero h1 { font-size: 4rem; }
+        .ip-box { border: 2px solid var(--primary); padding: 15px 30px; border-radius: 10px; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .ip-box:hover { background: rgba(0, 212, 255, 0.1); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">MiPixel<span>MC</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="staff.html">Staff & Moduli</a></li>
+            <li><a href="regole.html">Regole</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Benvenuti su <span>MiPixelMC</span></h1>
+        <p>Entra nel network più fresco d'Italia</p>
+        <div class="ip-box" onclick="navigator.clipboard.writeText('mc.mipixelmc.it'); alert('IP Copiato!');">
+            <strong>MC.MIPIXELMC.IT</strong>
+        </div>
+    </section>
+</body>
+</html>
